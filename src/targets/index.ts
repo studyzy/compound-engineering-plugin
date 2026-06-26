@@ -1,10 +1,12 @@
 import type { ClaudePlugin } from "../types/claude"
 import { convertClaudeToOpenCode, type ClaudeToOpenCodeOptions } from "../converters/claude-to-opencode"
 import { convertClaudeToCodex } from "../converters/claude-to-codex"
+import { convertClaudeToCodeBuddy } from "../converters/claude-to-codebuddy"
 import { convertClaudeToPi } from "../converters/claude-to-pi"
 import { convertClaudeToAntigravity } from "../converters/claude-to-antigravity"
 import { writeOpenCodeBundle } from "./opencode"
 import { writeCodexBundle } from "./codex"
+import { writeCodeBuddyBundle } from "./codebuddy"
 import { writePiBundle } from "./pi"
 import { writeAntigravityBundle } from "./antigravity"
 
@@ -72,5 +74,11 @@ export const targets: Record<string, TargetHandler> = {
     implemented: true,
     convert: convertClaudeToAntigravity as TargetHandler["convert"],
     write: writeAntigravityBundle as TargetHandler["write"],
+  },
+  codebuddy: {
+    name: "codebuddy",
+    implemented: true,
+    convert: convertClaudeToCodeBuddy as TargetHandler["convert"],
+    write: writeCodeBuddyBundle as TargetHandler["write"],
   },
 }
